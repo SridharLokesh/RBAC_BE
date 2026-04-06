@@ -1,9 +1,9 @@
 import User from "../Models/User.js";
 import Dashboard from "../Models/Dashboard.js";
 
-
+// ═══════════════════════════════════════════════════════════════
 //                   DASHBOARD VIEWING
-
+// ═══════════════════════════════════════════════════════════════
 
 // @route   GET /api/user/dashboards
 // @access  User only

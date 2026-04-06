@@ -1,9 +1,9 @@
 import User from "../Models/User.js";
 import Dashboard from "../Models/Dashboard.js";
 
-
+// ═══════════════════════════════════════════════════════════════
 //                     USER MANAGEMENT
-
+// ═══════════════════════════════════════════════════════════════
 
 // @route   POST /api/manager/users
 // @access  Manager only
@@ -102,8 +102,9 @@ export const deleteUser = async (req, res) => {
   res.status(200).json({ message: "User deleted successfully" });
 };
 
-
+// ═══════════════════════════════════════════════════════════════
 //                   DASHBOARD MANAGEMENT
+// ═══════════════════════════════════════════════════════════════
 
 // @route   POST /api/manager/dashboards
 // @access  Manager only

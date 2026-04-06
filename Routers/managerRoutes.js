@@ -17,13 +17,13 @@ const router = express.Router();
 // All routes protected — Manager only
 router.use(protect, authorizeRoles("manager"));
 
-// User Routes 
+// ── User Routes ─────────────────────────────────
 router.post("/users", createUser);
 router.get("/users", getMyUsers);
 router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 
-// Dashboard Routes 
+// ── Dashboard Routes ────────────────────────────
 router.post("/dashboards", createDashboard);
 router.get("/dashboards", getMyDashboards);
 router.put("/dashboards/:id", updateDashboard);

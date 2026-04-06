@@ -79,7 +79,7 @@ export const login = async (req, res) => {
   });
 };
 
-//  Get Logged In User Profile
+// ─── Get Logged In User Profile ───────────────────────────────────────────────
 // @route   GET /api/auth/me
 // @access  Protected
 export const getMe = async (req, res) => {

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../Models/User.js";
 
-// Protect Middleware
+// ─── Protect Middleware ───────────────────────────────────────────────────────
 const protect = async (req, res, next) => {
   try {
     let token;
@@ -14,14 +14,14 @@ const protect = async (req, res, next) => {
     }
 
     if (!token) {
-      return res.status(401).json({ message: "Not authorized, no token" });
+      return res.status(401).json({ message: "Not authorized, no token provided" });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id).select("-password");
 
     if (!req.user) {
-      return res.status(401).json({ message: "User not found" });
+      return res.status(401).json({ message: "User no longer exists" });
     }
 
     next();

@@ -13,11 +13,11 @@ const router = express.Router();
 // All routes protected — User only
 router.use(protect, authorizeRoles("user"));
 
-// Dashboard Routes 
+// ── Dashboard Routes ────────────────────────────
 router.get("/dashboards", getMyDashboards);
 router.get("/dashboards/:id", getDashboardById);
 
-// Profile & Team 
+// ── Profile & Team ──────────────────────────────
 router.get("/profile", getProfile);
 router.get("/teammates", getTeammates);
 

@@ -3,39 +3,30 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+import connectDB from "./Database/Configdb.js";
 import authRoutes from "./Routers/authRoutes.js";
 import adminRoutes from "./Routers/adminRoutes.js";
 import managerRoutes from "./Routers/managerRoutes.js";
 import userRoutes from "./Routers/userRoutes.js";
 
+connectDB();
+
 const app = express();
 
-// ── CORS — must be before all routes
-app.use(cors({
-  origin: "https://rbac-fe-lime.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}));
-
-// ── Handle ALL preflight OPTIONS requests
-app.options("*", cors({
-  origin: "https://rbac-fe-lime.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}));
-
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({ message: "RBAC API Running..." });
 });
 
-// ── Routes
+// ── Routes ──────────────────────────────────────
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/manager", managerRoutes);
 app.use("/api/user", userRoutes);
 
-export default app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

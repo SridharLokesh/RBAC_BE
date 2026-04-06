@@ -21,19 +21,19 @@ const router = express.Router();
 // All routes protected — Admin only
 router.use(protect, authorizeRoles("admin"));
 
-// Manager Routes
+// ── Manager Routes ──────────────────────────────
 router.post("/managers", createManager);
 router.get("/managers", getAllManagers);
 router.put("/managers/:id", updateManager);
 router.delete("/managers/:id", deleteManager);
 
-// User Routes
+// ── User Routes ─────────────────────────────────
 router.post("/users", createUser);
 router.get("/users", getAllUsers);
 router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 
-// Dashboard Routes 
+// ── Dashboard Routes ────────────────────────────
 router.post("/dashboards", createDashboard);
 router.get("/dashboards", getAllDashboards);
 router.put("/dashboards/:id", updateDashboard);
