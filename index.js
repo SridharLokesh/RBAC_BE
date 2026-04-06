@@ -9,7 +9,8 @@ import adminRoutes from "./Routers/adminRoutes.js";
 import managerRoutes from "./Routers/managerRoutes.js";
 import userRoutes from "./Routers/userRoutes.js";
 
-connectDB();
+
+
 
 const app = express();
 
@@ -20,13 +21,16 @@ app.get("/", (req, res) => {
   res.json({ message: "RBAC API Running..." });
 });
 
-// ── Routes 
-app.use("/api/auth", authRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/manager", managerRoutes);
-app.use("/api/user", userRoutes);
+// ── Routes
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use("/auth", authRoutes);
+app.use("/admin", adminRoutes);
+app.use("/manager", managerRoutes);
+app.use("/user", userRoutes);
+
+
+
+
+
+//EXPORT APP ONLY
+export default app;
